@@ -1,0 +1,14 @@
+{
+    "scripts": {
+        "dev:server": "npm -w @cfeee1e5e4e00a/netops.server run dev",
+        "dev:dashboard": "npm -w @cfeee1e5e4e00a/netops.dashboard run dev",
+        "dev:shared": "npm -w @cfeee1e5e4e00a/netops.shared run dev",
+        "start-dev": "concurrently \"npm:dev:*\""
+    },
+    "workspaces": [
+        "./packages/*"
+    ],
+    "devDependencies": {
+        "concurrently": "^7.4.0"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "include": ["src", "tailwind.config.js"],
+    "references": [{ "path": "../shared" }, { "path": "./tsconfig.node.json" }],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@shared/*": ["../shared/lib/*"],
+            "@/*": ["src/*"]
+        },
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "allowJs": false,
+        "skipLibCheck": true,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact"
+    }
+}

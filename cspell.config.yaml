@@ -1,0 +1,19 @@
+version: "0.2"
+language:
+  - en
+  - ru
+ignorePaths: []
+dictionaryDefinitions: []
+dictionaries: []
+words:
+  - cfeee1e5e4e00a
+  - clsx
+  - fastify
+  - heroicons
+  - leadpogrommer
+  - netops
+  - preact
+  - tailwindcss
+  - парсингом
+ignoreWords: []
+import: []
