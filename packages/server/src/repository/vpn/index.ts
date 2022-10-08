@@ -1,52 +1,29 @@
-import { resolve } from 'path';
-import { readFile, writeFile } from 'fs/promises';
+export * from './readConfig';
+export * from './writeConfig';
 
-import { AddressWithMask, VpnClient, VpnConfig } from '@shared/vpn';
-import { parseVpnConfig } from './parseVpnConfig';
-import { serializeVpnConfig } from './serializeVpnConfig';
+// const lastOctetRE = /\.(?<ip>[0-9]{1,3})\//g;
 
-const configPath = resolve(__dirname, '../../../../../wg.conf');
-const publicKeyPath = resolve(__dirname, '../../../../../publickey');
+// const increaseIp = (clients: VpnConfig['clients']): IPWithMask => {
+//     const lastClient = Object.values(clients)[clients.length - 1];
 
-export const getConfig = async (): Promise<VpnConfig> => {
-    const publicKey = (await readFile(publicKeyPath)).toString();
-    const contents = (await readFile(configPath)).toString();
-    const configFromFile = parseVpnConfig(contents);
+//     const lastOctet = Number(
+//         [...lastClient.ip.matchAll(lastOctetRE)][0].groups!.ip
+//     );
 
-    return {
-        interface: {
-            publicKey,
-            ...configFromFile.interface,
-        },
-        clients: configFromFile.clients,
-    };
-};
+//     return lastClient.ip.replace(lastOctetRE, `.${lastOctet + 1}/`);
+// };
 
-const lastOctetRE = /\.(?<ip>[0-9]{1,3})\//g;
+// export const addClient = async (dto: Omit<VpnPeer, 'ip'>): Promise<VpnPeer> => {
+//     const config = await getConfig();
+//     const ip = increaseIp(config.clients);
 
-const increaseIp = (clients: VpnConfig['clients']): AddressWithMask => {
-    const lastClient = Object.values(clients)[clients.length - 1];
+//     const client: VpnPeer = {
+//         ip,
+//         ...dto,
+//     };
 
-    const lastOctet = Number(
-        [...lastClient.ip.matchAll(lastOctetRE)][0].groups!.ip
-    );
+//     config.clients.push(client);
+//     await writeFile(configPath, serializeVpnConfig(config));
 
-    return lastClient.ip.replace(lastOctetRE, `.${lastOctet + 1}/`);
-};
-
-export const addClient = async (
-    dto: Omit<VpnClient, 'ip'>
-): Promise<VpnClient> => {
-    const config = await getConfig();
-    const ip = increaseIp(config.clients);
-
-    const client: VpnClient = {
-        ip,
-        ...dto,
-    };
-
-    config.clients.push(client);
-    await writeFile(configPath, serializeVpnConfig(config));
-
-    return client;
-};
+//     return client;
+// };

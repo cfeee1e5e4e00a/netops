@@ -9,11 +9,11 @@ app.register(cors, {
     origin: '*',
 });
 
-registerVpnRoutes(app);
+app.register(registerVpnRoutes, { prefix: '/api/vpn' });
 
-app.listen({ host: '10.0.0.2', port: 3001 }, (err, addr) => {
+app.listen({ host: '0.0.0.0', port: 3001 }, (err, addr) => {
     if (err) {
-        console.error('Failed to start', err);
+        console.error('Failed to start\n', err);
     }
 
     console.log(`Started on ${addr}`);

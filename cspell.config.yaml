@@ -6,14 +6,15 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - парсингом
   - cfeee1e5e4e00a
   - clsx
+  - daisyui
   - fastify
   - heroicons
   - leadpogrommer
   - netops
   - preact
   - tailwindcss
-  - парсингом
 ignoreWords: []
 import: []
