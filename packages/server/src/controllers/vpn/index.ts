@@ -1,6 +1,6 @@
 import { FastifyPluginCallback } from 'fastify';
 
-import { createClient } from './createClient';
+import { createPeer } from './createPeer';
 import { getConfig } from './getConfig';
 import { getMyIp } from './getMyIp';
 
@@ -13,8 +13,8 @@ export const registerVpnRoutes: FastifyPluginCallback = (app, opts, done) => {
 
     app.route({
         method: 'POST',
-        url: '/client',
-        handler: createClient,
+        url: '/peer',
+        handler: createPeer,
     });
 
     app.route({
