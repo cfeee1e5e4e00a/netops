@@ -1,5 +1,17 @@
 export type IPWithMask = string;
+export type IPWithPort = string;
 export type IP = string;
+
+export type VpnStatus = Record<string, VpnPeerStatus>;
+
+export type VpnPeerStatus = {
+    endpoint: IPWithPort;
+    lastHandshake: number;
+    transferRx: number;
+    transferTx: number;
+};
+
+// export type VpnPeerConnectionSta
 
 export type VpnConfig = {
     interface: VpnInterface;
@@ -11,7 +23,7 @@ export type VpnInterface = {
     listenPort: number;
     publicKey: string;
     privateKey: string;
-    dns: string;
+    dns: IP;
 };
 
 export type VpnPeer = VpnMaster | VpnNode | VpnUser;

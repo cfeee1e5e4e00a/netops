@@ -1,19 +1,29 @@
 import { FunctionComponent } from 'preact';
-import { NavbarItem, NavbarItemProps } from './NavbarItem';
+import { HeroIcon } from 'preact-heroicons';
+import { Link } from 'preact-router';
+
+export type NavbarItem = {
+    displayName: string;
+    url: string;
+    Icon?: HeroIcon;
+};
 
 type Props = {
-    items: NavbarItemProps[];
+    items: NavbarItem[];
 };
 
 export const Navbar: FunctionComponent<Props> = ({ items }) => {
     return (
-        <nav className="border-b border-gray-200 w-full flex flex-row items-center justify-start">
-            <h1 className="py-4 px-8 mr-4 text-4xl">Netops</h1>
-            <div className="w-full h-full">
-                {items.map((item) => (
-                    <NavbarItem {...item} key={item.url} />
-                ))}
-            </div>
+        <nav className="navbar bg-base-100 rounded-2xl shadow-lg gap-4">
+            {items.map(({ displayName, Icon, url }) => (
+                <Link
+                    href={url}
+                    className="btn btn-ghost font-normal text-xl space-x-1"
+                >
+                    {Icon && <Icon className="w-6 h-6" />}
+                    <span>{displayName}</span>
+                </Link>
+            ))}
         </nav>
     );
 };

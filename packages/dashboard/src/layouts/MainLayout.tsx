@@ -1,21 +1,23 @@
 import { FunctionalComponent } from 'preact';
 import { LockClosedOutline } from 'preact-heroicons';
 
-import { Navbar } from '@/components/navbar';
-import { NavbarItemProps } from '@/components/navbar/NavbarItem';
+import { Navbar, NavbarItem } from '@/components/navbar';
 
-const routes: NavbarItemProps[] = [
+const routes: NavbarItem[] = [
+    {
+        displayName: 'Netops',
+        url: '/',
+    },
     {
         displayName: 'VPN',
         Icon: LockClosedOutline,
         url: '/vpn',
-        active: true,
     },
 ];
 
 export const MainLayout: FunctionalComponent = ({ children }) => {
     return (
-        <div className="w-full h-full">
+        <div className="p-8 space-y-8 w-full h-full bg-gray-100">
             <Navbar items={routes} />
             {children}
         </div>

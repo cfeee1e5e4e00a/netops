@@ -1,5 +1,4 @@
 import { VpnConfig } from '@shared/vpn';
-import { ClientList } from '@/components/vpn/client';
 import { useFetch } from '@/hooks/useFetch';
 import { FunctionalComponent } from 'preact';
 
@@ -10,5 +9,5 @@ export const VpnPage: FunctionalComponent = () => {
         return <h1>Загрузка</h1>;
     }
 
-    return <ClientList clients={config.clients} />;
+    return <h1>Vpn</h1>;
 };

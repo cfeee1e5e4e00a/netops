@@ -6,7 +6,6 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
-  - парсингом
   - cfeee1e5e4e00a
   - clsx
   - daisyui
@@ -15,6 +14,8 @@ words:
   - leadpogrommer
   - netops
   - preact
+  - preshared
   - tailwindcss
+  - парсингом
 ignoreWords: []
 import: []
